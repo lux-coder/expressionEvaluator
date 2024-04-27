@@ -3,6 +3,7 @@ package com.expresion.evaluator.controller;
 import com.expresion.evaluator.exception.InvalidExpressionException;
 import com.expresion.evaluator.model.Expression;
 import com.expresion.evaluator.service.ExpressionService;
+import io.swagger.v3.oas.annotations.Operation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.ResponseEntity;
@@ -24,6 +25,7 @@ public class ExpressionController {
     }
 
     @PostMapping("/create")
+    @Operation(summary = "Create a new expression", description = "Provide a name and value for the expression")
     public ResponseEntity<?> createExpression(@RequestParam String name, @RequestBody String value) {
         log.debug("Received expression with name: {} and value: {}", name, value);
         try {
@@ -35,6 +37,7 @@ public class ExpressionController {
     }
 
     @PostMapping("/evaluate/{id}")
+    @Operation(summary = "Evaluate an expression", description = "Provide expression ID and JSON object to evaluate against")
     public ResponseEntity<?> evaluateExpression(@PathVariable("id") Long id, @RequestBody Map<String, Object> jsonData) {
         log.debug("Received expression to evaluate: {}", jsonData);
         try {
