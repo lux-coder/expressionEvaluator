@@ -28,7 +28,7 @@ To install Expression Evaluator API, follow these steps:
    
        cd expression-evaluator
 
-3. Build the project:
+2. Build the project:
 
        mvn clean install
 
@@ -56,7 +56,16 @@ Evaluating an Expression
 
      curl -X POST http://localhost:8080/expression/evaluate/{id} -H "Content-Type: application/json" -d '{"data":150}'
 
+## Running with Docker
+To build and run the application with Docker:
 
+1. Build the Docker image:
+
+       docker build -t expression-evaluator .
+
+2. Run the Docker container:
+
+       docker run -p 8080:8080 expression-evaluator
 
 
 
